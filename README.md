@@ -1,15 +1,5 @@
 # Horarios
 
-Banderas compartibles en email, redes, etc de zonas horarias
-
-### Uso
-
-Editar variable de hora:
-
-```python
-date_to_convert = "2020-11-17 21:00:00"
-```
-
 ### Ejecutar
 
 ```bash

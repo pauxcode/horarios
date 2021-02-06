@@ -38,15 +38,7 @@ times = {"00pm": "X"}
 
 for country in zones:
     dtc = date_to_convert.astimezone(pytz.timezone(country[1]))
-    #if country[1] == "Europe/Madrid":
-    #    #Imprime la hora en formato de 24 hrs
-    #    dtc = dtc.strftime("%-HH")
-    #else:
-    #    #Imprime la hora en formato de 12 hrs
-    #   dtc = dtc.strftime("%-I%p")
-    
-    #dtc = dtc.strftime("%-I%p")
-    #dtc = dtc.strftime("%-I:%-mm %p")
+   
     dtc = dtc.strftime("%H:%M %p")
 
     try:
