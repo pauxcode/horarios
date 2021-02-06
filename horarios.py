@@ -2,19 +2,18 @@ import pytz
 import datetime
 from datetime import datetime
 
-#Prueba de ramas
-
 hour = ""
 date_to_convert = ""
 day = datetime.now().strftime("%Y-%m-%d")
 
-confirmation = str(input("Deseas tambien convertir minutos? Teclee Y: "))
+print("Bienvenido al generador de horarios\n")
+confirmation = str(input("Quiere que su conversion incluya minutos? Teclee Y: "))
 
 if confirmation.lower() == 'y': 
-    hour = str(input("Ingrese la hora de referencia (hh:mm): "))
+    hour = str(input("Ingrese su hora local (hh:mm): "))
     date_to_convert = day + " " + hour + ":00"
 else:
-    hour = str(input("Ingrese la hora de referencia (hh): "))
+    hour = str(input("Ingrese su hora local (hh): "))
     date_to_convert = day + " " + hour + ":00:00"
 
 date_to_convert = datetime.strptime(date_to_convert, "%Y-%m-%d %H:%M:%S")
