@@ -1,5 +1,5 @@
 import pytz
-from datetime import datetime
+from datetime import datetime, timedelta
 
 def restar_fechas(fecha1, fecha2):
     start_date = datetime.strptime(fecha1, '%Y-%m-%d %H:%M:%S')
@@ -9,13 +9,24 @@ def restar_fechas(fecha1, fecha2):
     print("Diff days", diff.days)
     print("Diff seconds", diff.seconds)
     #return diff.days*24 + diff.seconds/3600
-    return diff.seconds/3600
+    return int(diff.seconds/3600)
 
 timezone = pytz.timezone("America/Mexico_city")
 timezone2 = pytz.timezone("Asia/Tokyo")
 
+local1 = datetime.now()
 local = datetime.now().astimezone(timezone).strftime('%Y-%m-%d %H:%M:%S')
 
+tokyo1 = datetime.now()
 tokyo = datetime.now().astimezone(timezone2).strftime('%Y-%m-%d %H:%M:%S')
 
-print(restar_fechas(local, tokyo))
+#print(restar_fechas(local, tokyo))
+#print(str(restar_fechas(local, tokyo)))
+
+diferencia_horaria = restar_fechas(local, tokyo)
+print(diferencia_horaria)
+
+print(local1)
+print(type(local1))
+fecha_final = local1 + timedelta(hours=diferencia_horaria)
+print(fecha_final)

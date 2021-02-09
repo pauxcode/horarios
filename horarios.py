@@ -11,7 +11,22 @@ zones = [
     ["ES", "Europe/Madrid"]
 ]
 
+timezone1 = pytz.timezone("America/Mexico_City")
+timezone2 = pytz.timezone("Asia/Tokyo")
+
 day = datetime.now().strftime("%Y-%m-%d")
+local = datetime.now().astimezone(timezone1).strftime("%Y-%m-%d %H:%M:%S")
+tokyo = datetime.now().astimezone(timezone2).strftime("%Y-%m-%d %H:%M:%S")
+
+def time_difference(date1, date2):
+    start_date = datetime.strptime(date1, '%Y-%m-%d %H:%M:%S')
+    end_date = datetime.strptime(date2, '%Y-%m-%d %H:%M:%S')
+    diff = end_date - start_date
+    print("Diff ", diff)
+    print("Diff days", diff.days)
+    print("Diff seconds", diff.seconds)
+    #return diff.days*24 + diff.seconds/3600
+    return int(diff.seconds/3600)
 
 def insert_hour(hour):
     date_to_convert = day + " " + hour + ":00:00"
@@ -49,6 +64,8 @@ def get_time(date):
             print(time.lower(), "[{}]".format(flag.strip("][")))
 
 def main():
+    var_time_difference = time_difference(local, tokyo)
+
     while True:
         command = str(input('''
             ¿Qué deseas convertir?
@@ -58,8 +75,9 @@ def main():
         '''))
 
         if command.lower() == 'h':
-            hour = str(input("Ingrese su hora local (hh): "))
-            date_to_convert = insert_hour(hour)
+            hour = int(input("Ingrese su hora local (hh): "))
+            corr_hour = hour - var_time_difference
+            date_to_convert = insert_hour(str(corr_hour))
         elif command.lower() == 'm':
             hour_minutes = str(input("Ingrese su hora local (hh:mm): "))
             date_to_convert = insert_hour_minutes(hour_minutes)
@@ -67,6 +85,8 @@ def main():
             break
 
         date_to_convert = datetime.strptime(date_to_convert, "%Y-%m-%d %H:%M:%S")
+
+        #time_difference(date_to_convert, )
 
         print("\nSu hora local elejida es: ", date_to_convert)
         print("Generando horarios de otros paises...\n")
