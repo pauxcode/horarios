@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
-from message import message
-from gettime import update_time
+from .message import message
+from .gettime import update_time
 
 date = datetime.now().strftime('%Y-%m-%d')
 year = datetime.now().strftime('%Y-')

@@ -1,4 +1,4 @@
-from inserts import insert_hour, insert_hour_minutes
+from modulos.inserts import insert_hour, insert_hour_minutes
 
 def main():
     while True:

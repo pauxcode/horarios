@@ -1,7 +1,7 @@
 import pytz
-from zones import zones
 from datetime import datetime, timedelta
-from settings import local_zone, zone_to_compare
+from .zones import zones
+from .settings import local_zone, zone_to_compare
 
 local_timezone = pytz.timezone(local_zone)
 timezone_to_compare = pytz.timezone(zone_to_compare)
