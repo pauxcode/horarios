@@ -1,3 +1,4 @@
+venv/
 env/
 .vim/
-modules/__pycache__/
+modules/__pycache__/*
